@@ -64,7 +64,7 @@ export function TaskApp() {
         </header>
 
         {/* Overview */}
-        <section className="mt-10 grid gap-4 sm:grid-cols-3">
+        <section className="mt-6 grid gap-4 pt-10 sm:grid-cols-3">
           <StatCard label="Open tasks" value={remaining} accent />
           <StatCard label="Completed" value={done} />
           <StatCard label="Categories" value={categories.length} />
