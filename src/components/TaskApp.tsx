@@ -42,9 +42,9 @@ export function TaskApp() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto flex min-h-screen max-w-5xl flex-col px-6 py-10 sm:px-10">
+      <div className="mx-auto flex min-h-screen max-w-5xl flex-col px-6 pb-10 sm:px-10">
         {/* Header */}
-        <header className="flex items-center justify-between">
+        <header className="sticky top-0 z-50 -mx-6 flex items-center justify-between border-b border-border/50 bg-background/80 px-6 py-4 backdrop-blur-xl sm:-mx-10 sm:px-10">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
               <Sparkles className="h-5 w-5" strokeWidth={1.75} />
@@ -64,7 +64,7 @@ export function TaskApp() {
         </header>
 
         {/* Overview */}
-        <section className="mt-10 grid gap-4 sm:grid-cols-3">
+        <section className="mt-6 grid gap-4 pt-10 sm:grid-cols-3">
           <StatCard label="Open tasks" value={remaining} accent />
           <StatCard label="Completed" value={done} />
           <StatCard label="Categories" value={categories.length} />
@@ -158,7 +158,7 @@ export function TaskApp() {
                 return (
                   <div
                     key={t.id}
-                    className="group flex items-center gap-4 rounded-xl border border-border bg-card px-4 py-3 transition hover:border-primary/40"
+                    className="group flex items-center gap-4 rounded-xl border border-border bg-card px-4 py-3 shadow-sm transition hover:border-primary/40 hover:shadow-md"
                   >
                     <button
                       aria-label={t.completed ? "Mark incomplete" : "Mark complete"}
