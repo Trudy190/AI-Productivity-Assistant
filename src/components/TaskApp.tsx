@@ -158,7 +158,7 @@ export function TaskApp() {
                 return (
                   <div
                     key={t.id}
-                    className="group flex items-center gap-4 rounded-xl border border-border bg-card px-4 py-3 transition hover:border-primary/40"
+                    className="group flex items-center gap-4 rounded-xl border border-border bg-card px-4 py-3 shadow-sm transition hover:border-primary/40 hover:shadow-md"
                   >
                     <button
                       aria-label={t.completed ? "Mark incomplete" : "Mark complete"}
