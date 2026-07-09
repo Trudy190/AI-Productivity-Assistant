@@ -11,6 +11,9 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/AppSidebar";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -77,10 +80,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Serene — A calmer task manager" },
-      { name: "description", content: "Minimal tasks, categories, and dark mode in a calming blue palette." },
-      { property: "og:title", content: "Serene — A calmer task manager" },
-      { property: "og:description", content: "Minimal tasks, categories, and dark mode in a calming blue palette." },
+      { title: "Nimbus AI — Workplace Productivity Assistant" },
+      { name: "description", content: "AI email, meeting notes, task planning, research, and chat for modern teams." },
+      { property: "og:title", content: "Nimbus AI — Workplace Productivity Assistant" },
+      { property: "og:description", content: "AI email, meeting notes, task planning, research, and chat for modern teams." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -117,8 +120,26 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <SidebarProvider>
+        <div className="flex min-h-screen w-full bg-background">
+          <AppSidebar />
+          <div className="flex min-w-0 flex-1 flex-col">
+            <header className="sticky top-0 z-40 flex h-14 items-center gap-3 border-b bg-background/80 px-4 backdrop-blur-xl sm:px-6">
+              <SidebarTrigger />
+              <div className="min-w-0">
+                <p className="truncate text-sm font-medium">Nimbus AI</p>
+                <p className="truncate text-[11px] text-muted-foreground">
+                  Your workplace productivity assistant
+                </p>
+              </div>
+            </header>
+            <main className="flex-1 px-4 py-8 sm:px-6 lg:px-10">
+              <Outlet />
+            </main>
+          </div>
+          <Toaster richColors position="top-right" />
+        </div>
+      </SidebarProvider>
     </QueryClientProvider>
   );
 }
