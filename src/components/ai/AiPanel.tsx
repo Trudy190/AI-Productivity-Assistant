@@ -1,0 +1,171 @@
+import { useState, type ReactNode } from "react";
+import ReactMarkdown from "react-markdown";
+import { Copy, Check, Sparkles, Loader2, RotateCcw } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
+import { generateAI } from "@/lib/ai-client";
+
+type Props = {
+  title: string;
+  description: string;
+  icon: ReactNode;
+  inputLabel: string;
+  inputPlaceholder: string;
+  ctaLabel: string;
+  system: string;
+  buildPrompt: (input: string) => string;
+  controls?: ReactNode;
+  minInputRows?: number;
+};
+
+export function AiPanel({
+  title,
+  description,
+  icon,
+  inputLabel,
+  inputPlaceholder,
+  ctaLabel,
+  system,
+  buildPrompt,
+  controls,
+  minInputRows = 6,
+}: Props) {
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [editing, setEditing] = useState(false);
+
+  const run = async () => {
+    if (!input.trim()) {
+      toast.error("Please add some input first");
+      return;
+    }
+    setLoading(true);
+    setOutput("");
+    setEditing(false);
+    try {
+      const text = await generateAI({ system, prompt: buildPrompt(input) });
+      setOutput(text);
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Failed to generate");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const copy = async () => {
+    if (!output) return;
+    await navigator.clipboard.writeText(output);
+    setCopied(true);
+    toast.success("Copied to clipboard");
+    setTimeout(() => setCopied(false), 1600);
+  };
+
+  return (
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-6">
+      <header className="flex flex-col gap-2">
+        <div className="flex items-center gap-2 text-xs font-medium text-primary">
+          <span className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-primary/10">
+            {icon}
+          </span>
+          AI Workspace
+        </div>
+        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h1>
+        <p className="max-w-2xl text-sm text-muted-foreground">{description}</p>
+      </header>
+
+      <div className="grid gap-5 lg:grid-cols-2">
+        {/* Input */}
+        <div className="flex flex-col gap-3 rounded-xl border bg-card p-5 shadow-sm">
+          <div className="flex items-center justify-between">
+            <label className="text-sm font-medium">{inputLabel}</label>
+            {controls}
+          </div>
+          <Textarea
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder={inputPlaceholder}
+            rows={minInputRows}
+            className="min-h-[180px] resize-y bg-background text-sm"
+          />
+          <div className="flex items-center justify-between gap-2">
+            <p className="text-xs text-muted-foreground">
+              {input.length} characters
+            </p>
+            <Button onClick={run} disabled={loading} className="gap-2">
+              {loading ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                <Sparkles className="h-4 w-4" />
+              )}
+              {loading ? "Generating…" : ctaLabel}
+            </Button>
+          </div>
+        </div>
+
+        {/* Output */}
+        <div className="flex flex-col gap-3 rounded-xl border bg-card p-5 shadow-sm">
+          <div className="flex items-center justify-between">
+            <label className="text-sm font-medium">AI response</label>
+            <div className="flex items-center gap-1">
+              {output && (
+                <>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setEditing((v) => !v)}
+                    className="gap-1.5 text-xs"
+                  >
+                    <RotateCcw className="h-3.5 w-3.5" />
+                    {editing ? "Preview" : "Edit"}
+                  </Button>
+                  <Button variant="ghost" size="sm" onClick={copy} className="gap-1.5 text-xs">
+                    {copied ? (
+                      <Check className="h-3.5 w-3.5" />
+                    ) : (
+                      <Copy className="h-3.5 w-3.5" />
+                    )}
+                    {copied ? "Copied" : "Copy"}
+                  </Button>
+                </>
+              )}
+            </div>
+          </div>
+
+          <div className="min-h-[280px] rounded-lg border bg-background/60 p-4 text-sm">
+            {loading ? (
+              <div className="flex h-full min-h-[240px] items-center justify-center gap-2 text-muted-foreground">
+                <Loader2 className="h-4 w-4 animate-spin" />
+                <span className="text-xs">Thinking through your request…</span>
+              </div>
+            ) : output ? (
+              editing ? (
+                <Textarea
+                  value={output}
+                  onChange={(e) => setOutput(e.target.value)}
+                  rows={14}
+                  className="min-h-[260px] resize-y border-0 bg-transparent p-0 focus-visible:ring-0"
+                />
+              ) : (
+                <article className="prose prose-sm max-w-none dark:prose-invert prose-headings:mt-4 prose-headings:mb-2 prose-p:my-2 prose-ul:my-2 prose-li:my-0.5">
+                  <ReactMarkdown>{output}</ReactMarkdown>
+                </article>
+              )
+            ) : (
+              <div className="flex h-full min-h-[240px] flex-col items-center justify-center text-center text-xs text-muted-foreground">
+                <Sparkles className="mb-2 h-5 w-5 opacity-40" />
+                Your AI-generated response will appear here.
+              </div>
+            )}
+          </div>
+
+          <p className="text-[11px] leading-relaxed text-muted-foreground">
+            AI-generated content may contain inaccuracies. Please review and edit before use.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
