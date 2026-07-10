@@ -6,7 +6,7 @@ export const Route = createFileRoute("/research")({
   component: ResearchPage,
   head: () => ({
     meta: [
-      { title: "AI Research Assistant — Nimbus AI" },
+      { title: "AI Research Assistant — TrudyM AI" },
       { name: "description", content: "Get quick summaries, insights and recommendations on any topic." },
     ],
   }),
@@ -16,7 +16,7 @@ function ResearchPage() {
   return (
     <AiPanel
       title="AI Research Assistant"
-      description="Enter a topic or question. Nimbus returns a structured briefing with key insights and next-step recommendations."
+      description="Enter a topic or question. TrudyM returns a structured briefing with key insights and next-step recommendations."
       icon={<BookOpen className="h-3.5 w-3.5" />}
       inputLabel="Research topic or question"
       inputPlaceholder="e.g. Trends in employee onboarding automation for mid-size SaaS companies."

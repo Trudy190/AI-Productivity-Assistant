@@ -7,7 +7,7 @@ export const Route = createFileRoute("/tasks")({
   component: TasksPage,
   head: () => ({
     meta: [
-      { title: "AI Task Planner — Nimbus AI" },
+      { title: "AI Task Planner — TrudyM AI" },
       { name: "description", content: "Turn your goals into a prioritized daily or weekly plan." },
     ],
   }),
@@ -21,7 +21,7 @@ function TasksPage() {
   return (
     <AiPanel
       title="AI Task Planner"
-      description="List your goals and constraints. Nimbus builds a prioritized schedule you can tweak."
+      description="List your goals and constraints. TrudyM builds a prioritized schedule you can tweak."
       icon={<ListChecks className="h-3.5 w-3.5" />}
       inputLabel="Goals, tasks and constraints"
       inputPlaceholder="e.g. Ship v2 landing page, prep board deck, 1:1 with Alex, 3 deep-work blocks."

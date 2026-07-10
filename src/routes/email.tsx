@@ -7,7 +7,7 @@ export const Route = createFileRoute("/email")({
   component: EmailPage,
   head: () => ({
     meta: [
-      { title: "Smart Email Generator — Nimbus AI" },
+      { title: "Smart Email Generator — TrudyM AI" },
       { name: "description", content: "Draft polished emails in formal, friendly or persuasive tones." },
     ],
   }),
@@ -21,7 +21,7 @@ function EmailPage() {
   return (
     <AiPanel
       title="Smart Email Generator"
-      description="Describe what you want to say and Nimbus will draft an email in your chosen tone."
+      description="Describe what you want to say and TrudyM will draft an email in your chosen tone."
       icon={<Mail className="h-3.5 w-3.5" />}
       inputLabel="What is the email about?"
       inputPlaceholder="e.g. Ask a client to reschedule Friday's review to next Tuesday afternoon."

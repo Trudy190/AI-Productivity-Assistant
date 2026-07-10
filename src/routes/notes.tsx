@@ -6,7 +6,7 @@ export const Route = createFileRoute("/notes")({
   component: NotesPage,
   head: () => ({
     meta: [
-      { title: "Meeting Notes Summarizer — Nimbus AI" },
+      { title: "Meeting Notes Summarizer — TrudyM AI" },
       { name: "description", content: "Turn messy meeting notes into a clean recap with action items and deadlines." },
     ],
   }),
@@ -16,7 +16,7 @@ function NotesPage() {
   return (
     <AiPanel
       title="Meeting Notes Summarizer"
-      description="Paste raw notes or a transcript. Nimbus will extract a summary, decisions, action items and deadlines."
+      description="Paste raw notes or a transcript. TrudyM will extract a summary, decisions, action items and deadlines."
       icon={<FileText className="h-3.5 w-3.5" />}
       inputLabel="Meeting notes or transcript"
       inputPlaceholder="Paste your meeting notes or transcript here…"

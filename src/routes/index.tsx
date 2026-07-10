@@ -5,13 +5,13 @@ export const Route = createFileRoute("/")({
   component: Dashboard,
   head: () => ({
     meta: [
-      { title: "Nimbus AI — Workplace Productivity Assistant" },
+      { title: "TrudyM AI — Workplace Productivity Assistant" },
       {
         name: "description",
         content:
-          "Nimbus AI helps you write emails, summarize meetings, plan tasks, and research faster with AI.",
+          "TrudyM AI helps you write emails, summarize meetings, plan tasks, and research faster with AI.",
       },
-      { property: "og:title", content: "Nimbus AI — Workplace Productivity Assistant" },
+      { property: "og:title", content: "TrudyM AI — Workplace Productivity Assistant" },
       {
         property: "og:description",
         content: "AI email, meeting notes, task planning, research, and chat in one workspace.",
@@ -71,7 +71,7 @@ function Dashboard() {
           Do focused work, faster.
         </h1>
         <p className="mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
-          Nimbus AI brings email drafting, meeting recaps, planning, research and chat into a single
+          TrudyM AI brings email drafting, meeting recaps, planning, research and chat into a single
           calm, professional workspace.
         </p>
         <div className="mt-6 flex flex-wrap gap-2">
@@ -119,7 +119,7 @@ function Dashboard() {
       <section className="rounded-xl border bg-muted/30 p-5 text-xs leading-relaxed text-muted-foreground">
         <p className="font-medium text-foreground">Responsible AI disclaimer</p>
         <p className="mt-1">
-          Nimbus AI generates content using large language models. Outputs can be inaccurate or
+          TrudyM AI generates content using large language models. Outputs can be inaccurate or
           biased and should be reviewed by a human before being sent, published or acted on. Do not
           submit confidential information you would not share with a third-party service.
         </p>

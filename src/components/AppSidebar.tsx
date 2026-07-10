@@ -41,7 +41,7 @@ export function AppSidebar() {
             <Sparkles className="h-4.5 w-4.5" strokeWidth={2} />
           </div>
           <div className="min-w-0 group-data-[collapsible=icon]:hidden">
-            <p className="truncate text-sm font-semibold tracking-tight">Nimbus AI</p>
+            <p className="truncate text-sm font-semibold tracking-tight">TrudyM AI</p>
             <p className="truncate text-xs text-muted-foreground">Workplace assistant</p>
           </div>
         </div>

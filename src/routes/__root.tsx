@@ -80,9 +80,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Nimbus AI — Workplace Productivity Assistant" },
+      { title: "TrudyM AI — Workplace Productivity Assistant" },
       { name: "description", content: "AI email, meeting notes, task planning, research, and chat for modern teams." },
-      { property: "og:title", content: "Nimbus AI — Workplace Productivity Assistant" },
+      { property: "og:title", content: "TrudyM AI — Workplace Productivity Assistant" },
       { property: "og:description", content: "AI email, meeting notes, task planning, research, and chat for modern teams." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -127,7 +127,7 @@ function RootComponent() {
             <header className="sticky top-0 z-40 flex h-14 items-center gap-3 border-b bg-background/80 px-4 backdrop-blur-xl sm:px-6">
               <SidebarTrigger />
               <div className="min-w-0">
-                <p className="truncate text-sm font-medium">Nimbus AI</p>
+                <p className="truncate text-sm font-medium">TrudyM AI</p>
                 <p className="truncate text-[11px] text-muted-foreground">
                   Your workplace productivity assistant
                 </p>
