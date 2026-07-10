@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Mail, FileText, ListChecks, BookOpen, MessageSquare, ArrowRight, Sparkles } from "lucide-react";
+import { Mail, FileText, ListChecks, BookOpen, MessageSquare, ArrowRight, Sparkles, SpellCheck, FileSearch, BarChart3, History } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Dashboard,
