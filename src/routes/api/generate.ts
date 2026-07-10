@@ -5,7 +5,7 @@ import { createLovableAiGatewayProvider } from "@/lib/ai-gateway.server";
 type Body = {
   system?: string;
   prompt?: string;
-  messages?: Array<{ role: "user" | "assistant" | "system"; content: string }>;
+  messages?: Array<{ role: "user" | "assistant"; content: string }>;
 };
 
 export const Route = createFileRoute("/api/generate")({
@@ -42,6 +42,7 @@ export const Route = createFileRoute("/api/generate")({
 
           const result = await generateText({
             model,
+            system: body.system ?? "",
             messages: messages.map((m) => ({ role: m.role, content: m.content })),
           });
 
