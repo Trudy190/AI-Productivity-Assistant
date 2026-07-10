@@ -37,7 +37,6 @@ export const Route = createFileRoute("/api/generate")({
           const messages =
             body.messages ??
             [
-              ...(body.system ? [{ role: "system" as const, content: body.system }] : []),
               { role: "user" as const, content: body.prompt ?? "" },
             ];
 
