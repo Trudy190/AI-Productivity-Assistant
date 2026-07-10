@@ -7,6 +7,13 @@ import {
   BookOpen,
   MessageSquare,
   Sparkles,
+  SpellCheck,
+  FileSearch,
+  BarChart3,
+  History,
+  User,
+  Settings as SettingsIcon,
+  Bell,
 } from "lucide-react";
 import {
   Sidebar,
@@ -21,24 +28,63 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 
-const nav = [
+const workspace = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
   { title: "Email Generator", url: "/email", icon: Mail },
   { title: "Meeting Notes", url: "/notes", icon: FileText },
   { title: "Task Planner", url: "/tasks", icon: ListChecks },
   { title: "Research", url: "/research", icon: BookOpen },
+  { title: "Grammar & Writing", url: "/grammar", icon: SpellCheck },
+  { title: "Document Summarizer", url: "/summarize", icon: FileSearch },
   { title: "Chatbot", url: "/chat", icon: MessageSquare },
+] as const;
+
+const insights = [
+  { title: "Analytics", url: "/analytics", icon: BarChart3 },
+  { title: "History", url: "/history", icon: History },
+] as const;
+
+const account = [
+  { title: "Profile", url: "/profile", icon: User },
+  { title: "Notifications", url: "/notifications", icon: Bell },
+  { title: "Settings", url: "/settings", icon: SettingsIcon },
 ] as const;
 
 export function AppSidebar() {
   const pathname = useRouterState({ select: (r) => r.location.pathname });
+
+  const renderGroup = (
+    label: string,
+    items: ReadonlyArray<{ title: string; url: string; icon: typeof LayoutDashboard }>,
+  ) => (
+    <SidebarGroup>
+      <SidebarGroupLabel>{label}</SidebarGroupLabel>
+      <SidebarGroupContent>
+        <SidebarMenu>
+          {items.map((item) => {
+            const active = pathname === item.url;
+            return (
+              <SidebarMenuItem key={item.url}>
+                <SidebarMenuButton asChild isActive={active} tooltip={item.title}>
+                  <Link to={item.url} className="transition-colors">
+                    <item.icon />
+                    <span>{item.title}</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            );
+          })}
+        </SidebarMenu>
+      </SidebarGroupContent>
+    </SidebarGroup>
+  );
 
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
         <div className="flex items-center gap-2.5 px-2 py-2">
           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-primary/70 text-primary-foreground shadow-sm">
-            <Sparkles className="h-4.5 w-4.5" strokeWidth={2} />
+            <Sparkles className="h-4 w-4" strokeWidth={2} />
           </div>
           <div className="min-w-0 group-data-[collapsible=icon]:hidden">
             <p className="truncate text-sm font-semibold tracking-tight">TrudyM AI</p>
@@ -47,26 +93,9 @@ export function AppSidebar() {
         </div>
       </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Workspace</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {nav.map((item) => {
-                const active = pathname === item.url;
-                return (
-                  <SidebarMenuItem key={item.url}>
-                    <SidebarMenuButton asChild isActive={active} tooltip={item.title}>
-                      <Link to={item.url}>
-                        <item.icon />
-                        <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                );
-              })}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        {renderGroup("Workspace", workspace)}
+        {renderGroup("Insights", insights)}
+        {renderGroup("Account", account)}
       </SidebarContent>
       <SidebarFooter>
         <div className="rounded-lg border border-border/60 bg-muted/40 p-3 text-[11px] leading-relaxed text-muted-foreground group-data-[collapsible=icon]:hidden">

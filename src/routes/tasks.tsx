@@ -19,7 +19,7 @@ function TasksPage() {
   const [mode, setMode] = useState<(typeof modes)[number]>("Daily");
 
   return (
-    <AiPanel
+    <AiPanel toolId="tasks"
       title="AI Task Planner"
       description="List your goals and constraints. TrudyM builds a prioritized schedule you can tweak."
       icon={<ListChecks className="h-3.5 w-3.5" />}

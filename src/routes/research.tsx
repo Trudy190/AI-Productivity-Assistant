@@ -14,7 +14,7 @@ export const Route = createFileRoute("/research")({
 
 function ResearchPage() {
   return (
-    <AiPanel
+    <AiPanel toolId="research"
       title="AI Research Assistant"
       description="Enter a topic or question. TrudyM returns a structured briefing with key insights and next-step recommendations."
       icon={<BookOpen className="h-3.5 w-3.5" />}
