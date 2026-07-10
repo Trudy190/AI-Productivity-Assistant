@@ -128,11 +128,15 @@ function RootComponent() {
           <div className="flex min-w-0 flex-1 flex-col">
             <header className="sticky top-0 z-40 flex h-14 items-center gap-3 border-b bg-background/80 px-4 backdrop-blur-xl sm:px-6">
               <SidebarTrigger />
-              <div className="min-w-0">
+              <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-medium">TrudyM AI</p>
                 <p className="truncate text-[11px] text-muted-foreground">
                   Your workplace productivity assistant
                 </p>
+              </div>
+              <div className="flex items-center gap-1">
+                <NotificationsBell />
+                <ThemeToggle />
               </div>
             </header>
             <main className="flex-1 px-4 py-8 sm:px-6 lg:px-10">
