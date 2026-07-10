@@ -83,11 +83,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "TrudyM AI — Workplace Productivity Assistant" },
-      { name: "description", content: "AI email, meeting notes, task planning, research, and chat for modern teams." },
+      { name: "description", content: "TrudyM AI helps you write emails, summarize meetings, plan tasks, and research faster with AI." },
       { property: "og:title", content: "TrudyM AI — Workplace Productivity Assistant" },
-      { property: "og:description", content: "AI email, meeting notes, task planning, research, and chat for modern teams." },
+      { property: "og:description", content: "TrudyM AI helps you write emails, summarize meetings, plan tasks, and research faster with AI." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "TrudyM AI — Workplace Productivity Assistant" },
+      { name: "twitter:description", content: "TrudyM AI helps you write emails, summarize meetings, plan tasks, and research faster with AI." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ef1f49c2-b3e6-4f2d-aff7-760878652310/id-preview-2649ddfb--d4a8f871-31e0-496d-b3e4-f1ba060c5674.lovable.app-1783648162509.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ef1f49c2-b3e6-4f2d-aff7-760878652310/id-preview-2649ddfb--d4a8f871-31e0-496d-b3e4-f1ba060c5674.lovable.app-1783648162509.png" },
     ],
     links: [
       {

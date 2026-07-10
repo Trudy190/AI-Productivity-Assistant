@@ -14,7 +14,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "TrudyM AI — Workplace Productivity Assistant" },
       {
         property: "og:description",
-        content: "AI email, meeting notes, task planning, research, and chat in one workspace.",
+        content: "TrudyM AI helps you write emails, summarize meetings, plan tasks, and research faster with AI.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
