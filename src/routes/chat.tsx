@@ -11,8 +11,8 @@ export const Route = createFileRoute("/chat")({
   component: ChatPage,
   head: () => ({
     meta: [
-      { title: "Workplace Chatbot — Nimbus AI" },
-      { name: "description", content: "Chat with Nimbus, your interactive workplace assistant." },
+      { title: "Workplace Chatbot — TrudyM AI" },
+      { name: "description", content: "Chat with TrudyM, your interactive workplace assistant." },
     ],
   }),
 });
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/chat")({
 const SYSTEM: ChatMessage = {
   role: "system",
   content:
-    "You are Nimbus, a helpful, concise workplace productivity assistant. Format responses in short paragraphs and bullet lists when useful. Be practical and professional.",
+    "You are TrudyM, a helpful, concise workplace productivity assistant. Format responses in short paragraphs and bullet lists when useful. Be practical and professional.",
 };
 
 const suggestions = [
@@ -162,7 +162,7 @@ function ChatPage() {
                   send(input);
                 }
               }}
-              placeholder="Ask Nimbus anything…"
+              placeholder="Ask TrudyM anything…"
               rows={1}
               className="min-h-[44px] flex-1 resize-none border-0 bg-transparent text-sm shadow-none focus-visible:ring-0"
             />
