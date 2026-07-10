@@ -58,6 +58,34 @@ const tools = [
     icon: MessageSquare,
     tint: "from-rose-500/15 to-pink-500/5 text-rose-600 dark:text-rose-300",
   },
+  {
+    title: "Grammar & Writing",
+    desc: "Fix grammar and polish tone in any piece of writing.",
+    href: "/grammar",
+    icon: SpellCheck,
+    tint: "from-cyan-500/15 to-sky-500/5 text-cyan-600 dark:text-cyan-300",
+  },
+  {
+    title: "Document Summarizer",
+    desc: "Turn long docs into a structured brief in seconds.",
+    href: "/summarize",
+    icon: FileSearch,
+    tint: "from-indigo-500/15 to-blue-500/5 text-indigo-600 dark:text-indigo-300",
+  },
+  {
+    title: "Productivity Analytics",
+    desc: "Track your AI usage, response volume and trends.",
+    href: "/analytics",
+    icon: BarChart3,
+    tint: "from-lime-500/15 to-emerald-500/5 text-lime-600 dark:text-lime-300",
+  },
+  {
+    title: "Response History",
+    desc: "Search, copy and export every past AI response.",
+    href: "/history",
+    icon: History,
+    tint: "from-slate-500/15 to-zinc-500/5 text-slate-600 dark:text-slate-300",
+  },
 ] as const;
 
 function Dashboard() {
