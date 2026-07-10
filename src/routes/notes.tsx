@@ -14,7 +14,7 @@ export const Route = createFileRoute("/notes")({
 
 function NotesPage() {
   return (
-    <AiPanel
+    <AiPanel toolId="notes"
       title="Meeting Notes Summarizer"
       description="Paste raw notes or a transcript. TrudyM will extract a summary, decisions, action items and deadlines."
       icon={<FileText className="h-3.5 w-3.5" />}

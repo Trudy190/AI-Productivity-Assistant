@@ -19,7 +19,7 @@ function EmailPage() {
   const [tone, setTone] = useState<(typeof tones)[number]>("Formal");
 
   return (
-    <AiPanel
+    <AiPanel toolId="email"
       title="Smart Email Generator"
       description="Describe what you want to say and TrudyM will draft an email in your chosen tone."
       icon={<Mail className="h-3.5 w-3.5" />}
