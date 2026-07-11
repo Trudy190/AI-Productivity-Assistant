@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
-import { Copy, Check, Sparkles, Loader2, RotateCcw, Download, Save } from "lucide-react";
+import { Copy, Check, Sparkles, Loader2, RotateCcw, Download, Save, RefreshCw, Trash2, FileDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
