@@ -2,17 +2,18 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import {
   LayoutDashboard,
   Mail,
-  FileText,
   ListChecks,
-  BookOpen,
   MessageSquare,
+  History,
+  Settings as SettingsIcon,
+  LifeBuoy,
   Sparkles,
+  FileText,
+  BookOpen,
   SpellCheck,
   FileSearch,
   BarChart3,
-  History,
   User,
-  Settings as SettingsIcon,
   Bell,
 } from "lucide-react";
 import {
@@ -28,27 +29,29 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 
-const workspace = [
+const main = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
-  { title: "Email Generator", url: "/email", icon: Mail },
+  { title: "Smart Email Generator", url: "/email", icon: Mail },
+  { title: "AI Task Planner", url: "/tasks", icon: ListChecks },
+  { title: "TrudyM AI Chat Assistant", url: "/chat", icon: MessageSquare },
+  { title: "History", url: "/history", icon: History },
+  { title: "Settings", url: "/settings", icon: SettingsIcon },
+  { title: "Help & Support", url: "/help", icon: LifeBuoy },
+] as const;
+
+const moreTools = [
   { title: "Meeting Notes", url: "/notes", icon: FileText },
-  { title: "Task Planner", url: "/tasks", icon: ListChecks },
   { title: "Research", url: "/research", icon: BookOpen },
   { title: "Grammar & Writing", url: "/grammar", icon: SpellCheck },
   { title: "Document Summarizer", url: "/summarize", icon: FileSearch },
-  { title: "Chatbot", url: "/chat", icon: MessageSquare },
-] as const;
-
-const insights = [
   { title: "Analytics", url: "/analytics", icon: BarChart3 },
-  { title: "History", url: "/history", icon: History },
 ] as const;
 
 const account = [
   { title: "Profile", url: "/profile", icon: User },
   { title: "Notifications", url: "/notifications", icon: Bell },
-  { title: "Settings", url: "/settings", icon: SettingsIcon },
 ] as const;
+
 
 export function AppSidebar() {
   const pathname = useRouterState({ select: (r) => r.location.pathname });
