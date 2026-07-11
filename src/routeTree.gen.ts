@@ -17,6 +17,7 @@ import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as NotesRouteImport } from './routes/notes'
 import { Route as HistoryRouteImport } from './routes/history'
+import { Route as HelpRouteImport } from './routes/help'
 import { Route as GrammarRouteImport } from './routes/grammar'
 import { Route as EmailRouteImport } from './routes/email'
 import { Route as ChatRouteImport } from './routes/chat'
@@ -64,6 +65,11 @@ const HistoryRoute = HistoryRouteImport.update({
   path: '/history',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GrammarRoute = GrammarRouteImport.update({
   id: '/grammar',
   path: '/grammar',
@@ -101,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/chat': typeof ChatRoute
   '/email': typeof EmailRoute
   '/grammar': typeof GrammarRoute
+  '/help': typeof HelpRoute
   '/history': typeof HistoryRoute
   '/notes': typeof NotesRoute
   '/notifications': typeof NotificationsRoute
@@ -117,6 +124,7 @@ export interface FileRoutesByTo {
   '/chat': typeof ChatRoute
   '/email': typeof EmailRoute
   '/grammar': typeof GrammarRoute
+  '/help': typeof HelpRoute
   '/history': typeof HistoryRoute
   '/notes': typeof NotesRoute
   '/notifications': typeof NotificationsRoute
@@ -134,6 +142,7 @@ export interface FileRoutesById {
   '/chat': typeof ChatRoute
   '/email': typeof EmailRoute
   '/grammar': typeof GrammarRoute
+  '/help': typeof HelpRoute
   '/history': typeof HistoryRoute
   '/notes': typeof NotesRoute
   '/notifications': typeof NotificationsRoute
@@ -152,6 +161,7 @@ export interface FileRouteTypes {
     | '/chat'
     | '/email'
     | '/grammar'
+    | '/help'
     | '/history'
     | '/notes'
     | '/notifications'
@@ -168,6 +178,7 @@ export interface FileRouteTypes {
     | '/chat'
     | '/email'
     | '/grammar'
+    | '/help'
     | '/history'
     | '/notes'
     | '/notifications'
@@ -184,6 +195,7 @@ export interface FileRouteTypes {
     | '/chat'
     | '/email'
     | '/grammar'
+    | '/help'
     | '/history'
     | '/notes'
     | '/notifications'
@@ -201,6 +213,7 @@ export interface RootRouteChildren {
   ChatRoute: typeof ChatRoute
   EmailRoute: typeof EmailRoute
   GrammarRoute: typeof GrammarRoute
+  HelpRoute: typeof HelpRoute
   HistoryRoute: typeof HistoryRoute
   NotesRoute: typeof NotesRoute
   NotificationsRoute: typeof NotificationsRoute
@@ -270,6 +283,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HistoryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/grammar': {
       id: '/grammar'
       path: '/grammar'
@@ -321,6 +341,7 @@ const rootRouteChildren: RootRouteChildren = {
   ChatRoute: ChatRoute,
   EmailRoute: EmailRoute,
   GrammarRoute: GrammarRoute,
+  HelpRoute: HelpRoute,
   HistoryRoute: HistoryRoute,
   NotesRoute: NotesRoute,
   NotificationsRoute: NotificationsRoute,

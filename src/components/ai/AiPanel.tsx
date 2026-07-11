@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
-import { Copy, Check, Sparkles, Loader2, RotateCcw, Download, Save } from "lucide-react";
+import { Copy, Check, Sparkles, Loader2, RotateCcw, Download, Save, RefreshCw, Trash2, FileDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
@@ -144,6 +144,16 @@ export function AiPanel({
                   <Button
                     variant="ghost"
                     size="sm"
+                    onClick={run}
+                    disabled={loading}
+                    className="gap-1.5 text-xs"
+                  >
+                    <RefreshCw className="h-3.5 w-3.5" />
+                    Regenerate
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
                     onClick={() => {
                       saveHistory({ tool: toolId, toolLabel: title, input, output });
                       toast.success("Saved to history");
@@ -152,6 +162,23 @@ export function AiPanel({
                   >
                     <Save className="h-3.5 w-3.5" />
                     Save
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      const blob = new Blob([output], { type: "text/markdown" });
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement("a");
+                      a.href = url;
+                      a.download = `${title.replace(/\s+/g, "-").toLowerCase()}.md`;
+                      a.click();
+                      URL.revokeObjectURL(url);
+                    }}
+                    className="gap-1.5 text-xs"
+                  >
+                    <FileDown className="h-3.5 w-3.5" />
+                    Download
                   </Button>
                   <Button
                     variant="ghost"
@@ -170,10 +197,23 @@ export function AiPanel({
                     )}
                     {copied ? "Copied" : "Copy"}
                   </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      setOutput("");
+                      setEditing(false);
+                    }}
+                    className="gap-1.5 text-xs text-muted-foreground"
+                  >
+                    <Trash2 className="h-3.5 w-3.5" />
+                    Clear
+                  </Button>
                 </>
               )}
             </div>
           </div>
+
 
           <div className="min-h-[280px] rounded-lg border bg-background/60 p-4 text-sm">
             {loading ? (

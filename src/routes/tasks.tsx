@@ -26,10 +26,11 @@ function TasksPage() {
       inputLabel="Goals, tasks and constraints"
       inputPlaceholder="e.g. Ship v2 landing page, prep board deck, 1:1 with Alex, 3 deep-work blocks."
       ctaLabel={`Plan my ${mode.toLowerCase()}`}
-      system="You are an executive coach that builds realistic, priority-driven schedules. You respect focus time and buffers, and clearly mark high/medium/low priority."
+      system="You are an executive coach that builds realistic, priority-driven schedules. You respect focus time and buffers, estimate durations honestly, recommend deadlines, and clearly mark priorities."
       buildPrompt={(input) =>
-        `Build a ${mode.toLowerCase()} plan in markdown for the tasks below.\n\nRequirements:\n- Group by ${mode === "Daily" ? "time blocks (Morning / Midday / Afternoon)" : "day (Mon–Fri)"}\n- Mark each item with a priority tag: **[High]**, **[Med]**, **[Low]**\n- Add a short "Focus of the ${mode === "Daily" ? "day" : "week"}" line at the top\n- End with 2-3 realistic tips.\n\nTasks:\n${input}`
+        `Build a ${mode.toLowerCase()} plan in markdown for the tasks below.\n\nRequirements:\n- Group by ${mode === "Daily" ? "time blocks (Morning / Midday / Afternoon)" : "day (Mon–Fri)"}\n- Order tasks logically (dependencies, energy levels)\n- Mark each item with a priority tag: **[High]**, **[Med]**, **[Low]**\n- Add an estimated duration (e.g. \`~45m\`) and a suggested deadline where relevant\n- Start with a short "Focus of the ${mode === "Daily" ? "day" : "week"}" line\n- End with 2–3 time-optimisation and productivity tips.\n\nTasks:\n${input}`
       }
+
       controls={
         <div className="flex rounded-lg border bg-background p-0.5 text-xs">
           {modes.map((m) => (
