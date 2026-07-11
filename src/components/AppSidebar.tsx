@@ -96,9 +96,10 @@ export function AppSidebar() {
         </div>
       </SidebarHeader>
       <SidebarContent>
-        {renderGroup("Workspace", workspace)}
-        {renderGroup("Insights", insights)}
+        {renderGroup("Workspace", main)}
+        {renderGroup("More tools", moreTools)}
         {renderGroup("Account", account)}
+
       </SidebarContent>
       <SidebarFooter>
         <div className="rounded-lg border border-border/60 bg-muted/40 p-3 text-[11px] leading-relaxed text-muted-foreground group-data-[collapsible=icon]:hidden">
